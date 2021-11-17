@@ -1,0 +1,58 @@
+﻿<Window x:Class="AppDrillFrontend.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppDrillFrontend"
+        mc:Ignorable="d"
+        Title="AppDrill Troubleshooter" Height="768" Width="1024"
+        WindowStartupLocation="CenterOwner">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Settings" Click="SettingsMenuItem_Click" />
+                <Separator />
+                <MenuItem Header="_Exit" Click="ExitMenuItem_Click" />
+            </MenuItem>
+            <MenuItem Header="_Session">
+                <MenuItem Header="_New" Click="NewSessionMenuItem_Click" />
+                <MenuItem Header="_Restart" Click="RestartSessionMenuItem_Click" IsEnabled="False" Name="restartSessionMenuItem" />
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Click="AboutMenuItem_Click" />
+            </MenuItem>
+        </Menu>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+            <Grid>
+                <StackPanel Margin="20">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="0" FontSize="26" Name="mainTitleLabel">Start a new session to begin a troubleshooting session</Label>
+                        <Image Source="AppDrill_Small.png" Grid.Column="1" />
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock FontSize="20">Choose a symptom:</TextBlock>
+                        <ComboBox Margin="5" Name="symptomsComboxBox" Width="250" IsEnabled="False" IsTextSearchEnabled="True" StaysOpenOnEdit="True" Text="Session inactive" IsEditable="true">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Name="chkSymptom" Width="220" Checked="SymptomCheckboxChecked" Unchecked="SymptomCheckboxChecked" Content="{Binding SymptomObj}" IsChecked="{Binding Checked}" CommandParameter="{Binding SymptomObj.Id}" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <TabControl Name="symptomsTabControl" Margin="10">
+                        <TabItem Header="Common failures">
+                            <local:SymptomControl x:Name="commonSymptomsControl"></local:SymptomControl>
+                        </TabItem>
+                    </TabControl>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </DockPanel>
+</Window>

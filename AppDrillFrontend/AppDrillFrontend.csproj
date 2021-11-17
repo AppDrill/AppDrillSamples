@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AppDrill_Small.png" />
+    <None Remove="Icon.ico" />
+    <None Remove="Icon.png" />
+    <None Remove="SplashScreen.bmp" />
+    <None Remove="version.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppDrillCore\AppDrillCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="AppDrill_Small.png" />
+    <Resource Include="Icon.png" />
+    <Resource Include="Icon.ico" />
+    <EmbeddedResource Include="version.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="SplashScreen.bmp" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="git rev-parse --short HEAD &gt; &quot;$(ProjectDir)\version.txt&quot;" />
+  </Target>
+
+</Project>
