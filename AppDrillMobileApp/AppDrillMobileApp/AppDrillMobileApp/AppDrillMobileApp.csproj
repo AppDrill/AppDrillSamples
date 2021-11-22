@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <Reference Include="AppDrillCore">
-      <HintPath>..\..\..\AppDrill\frontend\AppDrillFrontend\AppDrillCore\bin\Debug\netstandard2.1\AppDrillCore.dll</HintPath>
+      <HintPath>..\..\..\..\AppDrill\frontend\AppDrillFrontend\AppDrillCore\bin\Debug\netstandard2.1\AppDrillCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
