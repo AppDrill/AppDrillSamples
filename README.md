@@ -5,3 +5,4 @@ For more info check out the complete documentation [here](https://appdrill.githu
 
 List of sub-directories:
 * AppDrillFrontend: WPF project showing the use of the C# SDK
+* AppDrillMobileApp: Xamarin.Formas solution for Android and iOS
