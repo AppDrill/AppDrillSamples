@@ -1,0 +1,36 @@
+name: Frontend sample full build (Windows only)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+    - 'AppDrillFrontend/**'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Clean
+      run: dotnet clean AppDrillFrontend/AppDrillFrontend.sln --configuration Release && dotnet nuget locals all --clear
+    - name: Restore dependencies
+      run: dotnet restore AppDrillFrontend
+    - name: Build
+      run: dotnet build --configuration Release --no-restore AppDrillFrontend
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal AppDrillFrontend
+    - name: Publish
+      run: dotnet publish --configuration Release --no-build AppDrillFrontend
+    - name: Archive artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: AppDrill Troubleshooter
+        path: AppDrillFrontend/bin/Release/net6.0-windows/publish/
