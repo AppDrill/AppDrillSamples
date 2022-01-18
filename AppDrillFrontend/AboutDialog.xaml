@@ -13,7 +13,7 @@
         <StackPanel>
             <Image Source="AppDrill_Small.png" Stretch="None" Margin="5"></Image>
             <TextBlock Name="titleTextBlock" HorizontalAlignment="Center" Margin="10" FontSize="20">AppDrill Troubleshooter</TextBlock>
-            <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="16">(C) AppDrill, 2021</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="16">(C) AppDrill, 2021-2022</TextBlock>
             <Button Margin="10" Width="40" Click="OkButton_Click">OK</Button>
         </StackPanel>
     </Grid>
