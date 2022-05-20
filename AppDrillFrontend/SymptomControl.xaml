@@ -94,6 +94,13 @@
                         </Style>
                     </DataGridTextColumn.CellStyle>
                 </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Details">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnDetails" Content="..." Click="Details_ButtonClick" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Rank" MinWidth="50" Binding="{Binding rank}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Cost" MinWidth="50" Binding="{Binding cost}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Duration" MinWidth="50" Binding="{Binding duration}" IsReadOnly="True"/>

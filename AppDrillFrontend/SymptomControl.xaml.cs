@@ -18,6 +18,7 @@ using AppDrillCore.Model;
 using AppDrillCore.Session;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -119,13 +120,36 @@ namespace AppDrillFrontend
 
             var correctiveActions = Session.GetCorrectiveActions(failureRow.id);
 
+            if (correctiveActions == null || correctiveActions.Count == 0)
+            {
+                MessageBox.Show("There are no corrective actions associated with this failure", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                var title = $"Corrective action for failure \"{failureRow.name}\"";
+
+                try
+                {
+                    new DetailsDialog(title, correctiveActions[0].Name, correctiveActions[0].Description, correctiveActions[0].Url).ShowDialog();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Failed retrieving corrective action", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void Details_ButtonClick(object sender, RoutedEventArgs e)
+        {
+            var testRow = (sender as Button).DataContext as TestRow;
+
             try
             {
-                new CorrectiveActionsDialog(failureRow.name, correctiveActions).ShowDialog();
+                new DetailsDialog("Test details", testRow.name, testRow.description, null).ShowDialog();
             }
             catch (Exception)
             {
-                MessageBox.Show("Failed retrieving corrective action", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Failed retrieving test", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

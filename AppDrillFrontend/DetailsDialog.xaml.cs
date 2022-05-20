@@ -23,29 +23,22 @@ using System.Windows.Media.Imaging;
 namespace AppDrillFrontend
 {
     /// <summary>
-    /// Interaction logic for CorrectiveActionsDialog.xaml
+    /// Interaction logic for DetailsDialog.xaml
     /// </summary>
-    public partial class CorrectiveActionsDialog : Window
+    public partial class DetailsDialog : Window
     {
-        public CorrectiveActionsDialog(string failureName, List<CorrectiveAction> correctiveActions)
+        public DetailsDialog(string title, string name, string description, string url)
         {
             InitializeComponent();
 
-            Title = $"Corrective action for failure \"{failureName}\"";
+            Title = title;
 
-            if (correctiveActions.Count > 0)
-            {
-                caLabel.Content = correctiveActions[0].Name;
-                caTextBlock.Text = correctiveActions[0].Description;
+            label.Content = name;
+            textBlock.Text = description;
 
-                if (correctiveActions[0].Url != null)
-                {
-                    LoadImage(correctiveActions[0].Url);
-                }
-            }
-            else
+            if (url != null && url != "")
             {
-                throw new ArgumentException();
+                LoadImage(url);
             }
         }
 
@@ -57,7 +50,7 @@ namespace AppDrillFrontend
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(imageUrl);
                 bitmap.EndInit();
-                caImage.Source = bitmap;
+                image.Source = bitmap;
             }
             catch (Exception)
             {
