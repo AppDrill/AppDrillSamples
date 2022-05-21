@@ -81,7 +81,8 @@ namespace AppDrillFrontend
                         cost = Double.Parse(test.Cost),
                         duration = UInt32.Parse(test.Duration),
                         result = test.State,
-                        applicable = test.Applicable
+                        applicable = test.Applicable,
+                        url = test.Url
                     });
                 }
                 testsDataGrid.ItemsSource = testRows;

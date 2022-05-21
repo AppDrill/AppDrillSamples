@@ -50,5 +50,6 @@ namespace AppDrillFrontend
         public uint duration { get; set; }
         public double rank { get; set; }
         public bool applicable { get; set; }
+        public string url { get; set; }
     }
 }
