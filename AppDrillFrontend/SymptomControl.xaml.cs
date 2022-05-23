@@ -146,7 +146,7 @@ namespace AppDrillFrontend
 
             try
             {
-                new DetailsDialog("Test details", testRow.name, testRow.description, null).ShowDialog();
+                new DetailsDialog("Test details", testRow.name, testRow.description, testRow.url).ShowDialog();
             }
             catch (Exception)
             {

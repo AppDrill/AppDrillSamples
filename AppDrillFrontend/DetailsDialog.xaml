@@ -22,7 +22,7 @@
 
         <Label Margin="5" Name="label" Grid.Row="0" FontSize="16"/>
         <ScrollViewer Margin="5" Grid.Row="1">
-            <TextBlock Name="textBlock" Background="AliceBlue" TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <TextBox Name="textBlock"  Background="AliceBlue" BorderThickness="0" Text="{Binding Text, Mode=OneWay}" IsReadOnly="True" TextWrapping="Wrap" />
         </ScrollViewer>
         <Image Margin="5" Name="image" Grid.Row="2"/>
         <StackPanel Margin="5" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3">
