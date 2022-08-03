@@ -87,6 +87,7 @@ namespace AppDrillFrontend
 
                     if (modelNames != null)
                     {
+                        modelNames.Sort();
                         modelNamesComboBox.ItemsSource = modelNames;
 
                         if (modelNames.Count > 0)
